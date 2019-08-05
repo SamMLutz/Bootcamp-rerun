@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Title of the document</title>
+  </head>
+  <body>
+    <script>
+        var car = {
+        make: "Honda",
+        model: "Fit",
+        color: "Blue Raspberry",
+        mileage: 3000,
+        isWorking: true,
+
+        driveToWork: function() {
+
+          alert("Old Mileage: " + this.mileage);
+
+          this.mileage = this.mileage + 8;
+
+          alert("New mileage: " + this.mileage);
+        },
+
+        driveAroundWorld: function() {
+
+          alert("Old Mileage: " + this.mileage);
+
+          this.mileage = this.mileage + 24000;
+
+          alert("New Mileage: " + this.mileage);
+          alert("Car needs a tuneup!");
+
+          this.isWorking = false;
+        },
+
+        getTuneUp: function() {
+          alert("Car is ready to go!");
+          this.isWorking = true;
+        },
+
+        honk: function() {
+          alert("Honk! Honk!");
+        }
+      };
+
+function reWriteStats(){
+    console.log(car.make,car.model,car.mileage,car.color,car.isWorking);
+}
+      document.onkeyup = function(evt){
+           var letter = evt.key;
+           if(letter == "h"){
+                car.honk();  
+           }
+           if(letter == "d"){
+               car.driveToWork();
+           }
+           if(letter == "w"){
+               car.driveAroundWorld();
+           }
+           if(letter ="t"){
+               car.getTuneUp()
+           }
+           reWriteStats();
+
+
+      }
+        </script>>
+  </body>
+</html>
