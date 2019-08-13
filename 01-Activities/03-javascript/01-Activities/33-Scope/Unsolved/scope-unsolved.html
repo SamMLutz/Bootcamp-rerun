@@ -34,19 +34,28 @@
     // shadow the age value.
     function thirdFunction() {
       // ???
+      console.log(`${name} is ${age}.`)
     }
 
     // Log the return value of thirdFunction.
+    thirdFunction()
     // BONUS: Do this without a variable assignment.
 
     // CHALLENGE: Write a function that takes a string argument, and prints it.
-    function report(/* ??? */) {
+    function report(str) {
       // ???
+      console.log(str)
     }
+
+    report("yurpity churpsauce biscuits")
 
     // Next, research forEach, and use the report function
     // to print the values in the languages array defined
     // above.
+    languages.forEach(item => {
+      report(item)
+    })
+
     // ???
     </script>
 
