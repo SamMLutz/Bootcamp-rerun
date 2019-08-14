@@ -29,6 +29,9 @@
       // ====================================================================
       // Here we create variables for tracking the number of sandwiches eaten
       // ...
+      let pbjCounter = 0;
+      let gcCounter = 0;
+      let rbCounter = 0;
 
 
       // ...
@@ -38,6 +41,11 @@
       // Here we create various on "click" functions which capture the clicks
       // Inside each click event is the code to create an alert, update the counter, then show the updated count.
       // ...
+      $("#pbj").on("click", function(){
+        alert('you ate pb and j')
+        pbjCounter++
+        alert(`you have eaten ${pbjCounter} pbj`)
+      })
 
 
       // ...

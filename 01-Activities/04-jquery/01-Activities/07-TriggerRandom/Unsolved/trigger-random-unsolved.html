@@ -36,7 +36,14 @@
 
       // CREATE THE MISSING CODE HERE. Your code should add content to the random-number div.
       // ...
+     
 
+      $("#random-button").on("click", function() {
+        const randomNumber = Math.floor(Math.random() * 100);
+        console.log(randomNumber)
+        console.log('churp')
+        $("#random-number").text(randomNumber)
+      })
 
       // ...
 
