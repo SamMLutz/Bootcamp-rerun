@@ -66,6 +66,19 @@
           </div>
         </div>
 
+            <!-- clone-->
+            <div id="clone" class="card">
+              <h4 class="card-header">Superpowers - Clone!</h4>
+              <div class="card-body">
+                <div class="text-center">
+                  <button class="btn btn-dark btn-lg clone-button">
+                    <span class="fa fa-eye"></span> Clone</button>
+                  <button class="btn btn-info btn-lg invis-button">
+                    <span class="fa fa-eye-slash"></span> De-Clone</button>
+                </div>
+              </div>
+            </div>
+
         <!-- Controls (Superpower Move Controls) -->
         <div id="moveControls" class="card">
           <h4 class="card-header">Move Controls</h4>
@@ -88,7 +101,7 @@
       </div>
 
       <!-- Right Card (Captain Planet Hero)-->
-      <div class="col-lg-6">
+      <div class="col-lg-6 planet">
 
         <!-- Captain Planet Image -->
         <img src="assets/captain-planet.jpg" alt="" class="img captain-planet" style="position:absolute; top:50px; left: 80px; z-index: -20; height: 300px">
@@ -134,6 +147,12 @@
       captainPlanet.animate({ opacity: "0.05" });
     });
 
+    // clone button
+    $(".clone-button").on("click", function(){
+      console.log("clone button clicked")
+      $(".planet").clone().appendTo(".planet")
+    })
+
     // Move Buttons
     $(".up-button").on("click", function() {
       captainPlanet.animate({ top: "-=200px" }, "normal");
@@ -143,7 +162,7 @@
     });
     $(".left-button").on("click", function() {
       captainPlanet.animate({ left: "-=200px" }, "normal");
-    });
+    }); 
     $(".right-button").on("click", function() {
       captainPlanet.animate({ left: "+=200px" }, "normal");
     });
