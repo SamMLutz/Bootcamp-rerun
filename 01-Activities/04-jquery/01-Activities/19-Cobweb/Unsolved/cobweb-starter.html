@@ -54,6 +54,26 @@ console.log(`i found my ${theCobWeb.biggestWeb.biggerWeb.smallerWeb.tinyWeb.item
 //    headphones it should give back otherBigWeb
 // HINT: you should use recursion
 
+function findByIdRecursive(array, id) {
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    // console.log(`element: ${element}`)
+    if (element.id === id) {
+      return element;
+    } else {
+      if (element.children) {
+        const found = findByIdRecursive(element.children, id);
+
+        if (found) {
+          return found;
+        }
+      }
+    }
+  }
+}
+
+console.log(findByIdRecursive(theCobWeb, 'comb'))
+
 </script>
 
 </body>

@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>jQuery Calculator</title>
+  <meta charset="UTF-8">
+  <title>jQuery Calculator</title>
 
-    <!-- Added link to the jQuery Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Added a link to Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!-- Added a link to our external stylesheet-->
-    <link rel="stylesheet" href="style.css">
+  <!-- Added a link to our external stylesheet-->
+  <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<!-- Jumbotron for Title -->
-<div class="jumbotron">
+  <!-- Jumbotron for Title -->
+  <div class="jumbotron">
     <h1 class="text-center">jQuery Calculator</h1>
     <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
-</div>
+  </div>
 
-<div class="container">
+  <div class="container">
 
     <div class="row">
 
@@ -61,7 +63,7 @@
       <div class="col-lg-6">
         <div class="card">
           <h3 class="card-header">Result</h3>
-          <div class="card-body">
+          <div class="card-body result-body">
             <h1 id="first-number"></h1>
             <h1 id="operator"></h1>
             <h1 id="second-number"></h1>
@@ -73,25 +75,79 @@
     </div>
   </div>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-$(document).ready(function() {
+    $(document).ready(function () {
+      let firstNumber;
+      let secondNumber;
+      let operator;
+      let hasOperator = false;
+      let answer;
+
+      // Your code here...
+      $("#button-clear").on('click', function (){
+        $('.result-body').empty()
+        location.reload()
+      })
+
+      // print the value of clicked button to the first number id
+      $(".number").on("click", function () {
+        if (hasOperator === false) {
+          $("#first-number").append($(this).val());
+          firstNumber = $("#first-number")
+        }
+        else if (hasOperator) {
+          $("#second-number").append($(this).val())
+          secondNumber = $("#second-number")
+        }
+      });
+
+      // click function to add operator to the operator id
+      $(".operator").on("click", function () {
+        $("#operator").text($(this).val());
+        hasOperator = true;
+        // operator = $(this.val());
+        console.log(this.value)
+        operator = this.value
+      });
+
+      $("#button-equal").on('click', function () {
+        firstNumber = parseInt(firstNumber[0].innerText)
+        console.log(`firstNumber: ${firstNumber}`)
+
+        secondNumber = parseInt(secondNumber[0].innerText)
+        console.log(`secondNumber: ${secondNumber}`)
+
+        console.log(`operator: ${JSON.stringify(operator)}`)
+        console.log("churp")
+        // console.log(parseInt(firstNumber[0].innerText))
+        // console.log(secondNumber[0].innerText)
+        switch (operator) {
+          case "minus":
+          console.log(firstNumber - secondNumber);
+          answer = firstNumber - secondNumber;
+          break;
+          case "plus":
+          console.log(firstNumber + secondNumber);
+          answer = firstNumber + secondNumber;
+          break;
+          case "times":
+          console.log(firstNumber * secondNumber);
+          answer = firstNumber * secondNumber;
+          break;
+          case "divide":
+          console.log(firstNumber / secondNumber);
+          answer = firstNumber / secondNumber;
+          break;
+        }
+        $("#result").text(answer)
+      })
 
 
-// Your code here...
-// print the value of clicked button to the first number id
-$(".number").on("click", function(){
-    $("#first-number").append($(this).val());
+    });
 
-});
-// click function to add operator to the operator id
-$(".operator").on("click", function(){
-    $("#operator").text($(this).val());
-
-});
-});
-
-</script>
+  </script>
 
 </body>
+
 </html>
