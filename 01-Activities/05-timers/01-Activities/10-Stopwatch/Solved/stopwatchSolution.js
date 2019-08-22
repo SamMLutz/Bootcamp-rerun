@@ -55,7 +55,7 @@ function recordLap() {
   lap++;
 }
 function count() {
-
+898
   // DONE: increment time by 1, remember we cant use "this" here.
   time++;
 
