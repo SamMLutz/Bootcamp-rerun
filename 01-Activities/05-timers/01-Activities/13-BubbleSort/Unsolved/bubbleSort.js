@@ -1,22 +1,31 @@
+function swap(array, i, j) {
+  var temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
+}
 
-// Bubble Sort Interview Questions:
+function bubbleSort(array) {
+  var countOuter = 0;
+  var countInner = 0;
+  var countSwap = 0;
 
+  var swapped;
+  do {
+    countOuter++;
+    swapped = false;
+    for(var i = 0; i < array.length; i++) {
+      countInner++;
+      if(array[i] && array[i + 1] && array[i] > array[i + 1]) {
+        countSwap++;
+        swap(array, i, i + 1);
+        swapped = true;
+      }
+    }
+  } while(swapped);
 
-// Write a function that sorts an array of numbers in order.
-// You can do this with the Bubble Sort algorithm.
-// If you are unfamiliar with Bubble Sort,
-// use Google to read up on the concept.
-// Spend about 10 minutes pseudocoding your solution before writing any JavaScript.
-
-// Use the array provided below.
-
-// Display the unsorted array in the `#start` div of `index.html`.
-
-// When the user clicks the `button` in index.html,
-// the sorted result should be displayed in the `#result` div.
-
-// DO NOT USE JQUERY TO SELECT ELEMENTS. ONLY USE VANILLA JS.
-
+  console.log('outer:', countOuter, 'inner:', countInner, 'swap:', countSwap);
+  return array;
+}
 
 var unsortedArr = [
   1, 326, 251, 24, 284, 364, 287, 74, 89,
@@ -67,3 +76,53 @@ var unsortedArr = [
   292, 332, 209, 244, 196, 179, 472, 279, 40, 486, 270, 185,
   181, 485, 495, 81, 169, 294, 79, 400, 92, 104, 249
 ];
+
+
+// Bubble Sort Interview Questions:
+
+
+// Write a function that sorts an array of numbers in order.
+// You can do this with the Bubble Sort algorithm.
+// If you are unfamiliar with Bubble Sort,
+// use Google to read up on the concept.
+// Spend about 10 minutes pseudocoding your solution before writing any JavaScript.
+
+// Use the array provided below.
+
+// Display the unsorted array in the `#start` div of `index.html`.
+let target = document.getElementById("start")
+
+// When the user clicks the `button` in index.html,
+document.addEventListener('click', function (event) {
+
+	// If the clicked element doesn't have the right selector, bail
+	if (!event.target.matches('#go')) return;
+
+	// Don't follow the link
+	event.preventDefault();
+
+	// Log the clicked element in the console
+  console.log(event.target);
+  
+  // store targetDiv in a variables
+  let targetDiv = document.getElementById('result')
+
+  // sort the array
+  let sortedArr = bubbleSort(unsortedArr)
+  console.log(sortedArr)
+
+  sortedArr.forEach(item => {
+    // console.log(item)
+    targetDiv.append(`${item}, `);
+  })
+
+}, false);
+
+// the sorted result should be displayed in the `#result` div.
+
+// DO NOT USE JQUERY TO SELECT ELEMENTS. ONLY USE VANILLA JS.
+
+unsortedArr.forEach(item => {
+  // console.log(item)
+  target.append(`${item}, `);
+})
